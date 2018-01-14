@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block head %}
+<script type="text/javascript" src="http://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {packages: ['line', 'corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart(){
+        // Define the chart to be drawn.
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Time');
+        data.addColumn('number', 'CO2');
+        data.addColumn('number', 'temparature');
+
+        data.addRows(
+            [
+                [1, 30, 1001],
+                [2, 31, 1000],
+                [3, 32, 999],
+                [4, 33, 994],
+                [5, 34, 995],
+                [6, 35, 996],
+                [7, 36, 997],
+            ]
+        );
+
+        var options = {
+            chart:{
+                title: 'CO2 and Temparature Monitoring',
+                subtitle: 'Sogang university, AS1016'
+            },
+            width: 900,
+            height: 500,
+            series:{
+                // gives each series an axis name that matches the Y- axis below.
+                0: {axis: 'CO2'},
+                1: {axis: 'Temparature'}
+            },
+            axes:{
+                // Add labels to each axis; (they don't have to match the axis names.)
+                y: {
+                    CO2: {label: 'CO2(ppm)'},
+                    Temparature: {label: 'Temp(Celsius)'}
+                }
+            }
+        };
+
+        var chart = new google.charts.Line(document.getElementById('material-chart'));
+        chart.draw(data, options);
+        //chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+</script>
+{% endblock %}
+
+
+
+
+{% block content %}
+  <div id="material-chart"></div>
+{% endblock %}

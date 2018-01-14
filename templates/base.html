@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AIR-MAN</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!--
+        <link rel="stylesheet" href="{d% static 'css/style.css' %}">
+        {dd% include "./script.html" %}>
+        -->
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav></nav>
+        <div></div>
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+        <footer class="footer">
+            <div style="background-color: #2E2E2E;">
+                <a class="footer-a" href="#">About us</a> &nbsp;&nbsp;
+                <a class="footer-a" href="https://github.com/ABEEKX/">github</a>&nbsp;
+                <span class="footer-text">
+                    Team ABEEKX is under the MIT license. 
+                </span>
+            </div>
+        </footer>
+    </body>
+</html>
